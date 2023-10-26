@@ -108,6 +108,11 @@
         # Takes too much memory in `nix flake show`
         # checks = import ./checks { inherit self nixpkgs system; };
 
+        checks.${system} =
+          builtins.mapAttrs
+          (_: p: p // {inherit system;})
+          self.packages.${system};
+
         # hydraJobs are checks
         hydraJobs = builtins.mapAttrs (_: check:
           (nixpkgs.lib.recursiveUpdate check {
@@ -131,11 +136,6 @@
           path = ./flake-template;
           description = "Flake with MicroVMs";
         };
-
-        checks.${system} =
-          builtins.mapAttrs
-          (_: p: p // {inherit system;})
-          self.packages.${system};
 
         nixosConfigurations =
           let
