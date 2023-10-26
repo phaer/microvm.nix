@@ -132,6 +132,11 @@
           description = "Flake with MicroVMs";
         };
 
+        checks.${system} =
+          builtins.mapAttrs
+          (_: p: p // {inherit system;})
+          self.packages.${system};
+
         nixosConfigurations =
           let
             hypervisorsWith9p = [
