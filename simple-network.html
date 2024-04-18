@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,31 +61,38 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="declaring.html"><strong aria-hidden="true">2.</strong> Declaring MicroVMs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="options.html"><strong aria-hidden="true">2.1.</strong> Configuration options</a></li><li class="chapter-item expanded "><a href="interfaces.html"><strong aria-hidden="true">2.2.</strong> Network interfaces</a></li><li class="chapter-item expanded "><a href="shares.html"><strong aria-hidden="true">2.3.</strong> Shared directories</a></li><li class="chapter-item expanded "><a href="output-options.html"><strong aria-hidden="true">2.4.</strong> Output options</a></li><li class="chapter-item expanded "><a href="microvm-options.html"><strong aria-hidden="true">2.5.</strong> Options reference</a></li></ol></li><li class="chapter-item expanded "><a href="packages.html"><strong aria-hidden="true">3.</strong> Running a MicroVM as a package</a></li><li class="chapter-item expanded "><a href="host.html"><strong aria-hidden="true">4.</strong> Preparing a host for declarative MicroVMs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="simple-network.html" class="active"><strong aria-hidden="true">4.1.</strong> A simple network setup</a></li><li class="chapter-item expanded "><a href="host-systemd.html"><strong aria-hidden="true">4.2.</strong> Host systemd services</a></li></ol></li><li class="chapter-item expanded "><a href="declarative.html"><strong aria-hidden="true">5.</strong> Declarative MicroVMs</a></li><li class="chapter-item expanded "><a href="microvm-command.html"><strong aria-hidden="true">6.</strong> Imperative MicroVM management</a></li><li class="chapter-item expanded "><a href="conventions.html"><strong aria-hidden="true">7.</strong> Conventions</a></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">8.</strong> Frequently Asked Questions</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li class="chapter-item expanded "><a href="declaring.html"><strong aria-hidden="true">2.</strong> Declaring MicroVMs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="options.html"><strong aria-hidden="true">2.1.</strong> Configuration options</a></li><li class="chapter-item expanded "><a href="interfaces.html"><strong aria-hidden="true">2.2.</strong> Network interfaces</a></li><li class="chapter-item expanded "><a href="shares.html"><strong aria-hidden="true">2.3.</strong> Shared directories</a></li><li class="chapter-item expanded "><a href="cpu-emulation.html"><strong aria-hidden="true">2.4.</strong> CPU emulation</a></li><li class="chapter-item expanded "><a href="output-options.html"><strong aria-hidden="true">2.5.</strong> Output options</a></li><li class="chapter-item expanded "><a href="microvm-options.html"><strong aria-hidden="true">2.6.</strong> Options reference</a></li></ol></li><li class="chapter-item expanded "><a href="packages.html"><strong aria-hidden="true">3.</strong> Running a MicroVM as a package</a></li><li class="chapter-item expanded "><a href="host.html"><strong aria-hidden="true">4.</strong> Preparing a host for declarative MicroVMs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="simple-network.html" class="active"><strong aria-hidden="true">4.1.</strong> A simple network setup</a></li><li class="chapter-item expanded "><a href="advanced-network.html"><strong aria-hidden="true">4.2.</strong> Advanced network setup</a></li><li class="chapter-item expanded "><a href="host-systemd.html"><strong aria-hidden="true">4.3.</strong> Host systemd services</a></li></ol></li><li class="chapter-item expanded "><a href="declarative.html"><strong aria-hidden="true">5.</strong> Declarative MicroVMs</a></li><li class="chapter-item expanded "><a href="microvm-command.html"><strong aria-hidden="true">6.</strong> Imperative MicroVM management</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ssh-deploy.html"><strong aria-hidden="true">6.1.</strong> Deploy via SSH</a></li></ol></li><li class="chapter-item expanded "><a href="conventions.html"><strong aria-hidden="true">7.</strong> Conventions</a></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">8.</strong> Frequently Asked Questions</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
 
         <!-- Track and set sidebar scroll position -->
@@ -116,9 +123,9 @@
                                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -170,89 +177,101 @@
 <p>While networking infrastructure is out of scope for the <strong>microvm.nix</strong>
 flake, here is some guidance for providing the MicroVMs on your NixOS
 machine with internet access.</p>
+<p>Use this for your local LAN where IP addresses are free and
+plentiful. If not, head over to the
+<a href="./advanced-network.html">advanced networking</a> page.</p>
 <p>Because we already use systemd for MicroVM startup, let's pick
 <code>systemd-networkd</code>:</p>
 <pre><code class="language-nix">networking.useNetworkd = true;
 </code></pre>
 <h2 id="a-bridge-to-link-tap-interfaces"><a class="header" href="#a-bridge-to-link-tap-interfaces">A bridge to link TAP interfaces</a></h2>
-<p>To make your MicroVM reachable, use a TAP interface to get a virtual
-Ethernet interface on the host. Although it is possible to assign
-individual IP configuration to these individual interfaces, let us
-avoid the additional configuration effort and create a bridge instead:</p>
-<pre><code class="language-nix">systemd.network = {
-  netdevs.&quot;10-microvm&quot;.netdevConfig = {
+<p>To make your MicroVM reachable, the host will place its Ethernet port (<code>eno1</code>)
+on a bridge (<code>br0</code>). This bridge will have the MicroVM's TAP interface attached
+to it - directly placing the MicroVM on your local network.</p>
+<p>Note that the addresses provided below are examples and you must adjust these
+for your network settings. Also note that the <code>eno1</code> must be attached to the
+bridge with the <code>vm-*</code> TAP interfaces that you will specify in the MicroVM
+definition.</p>
+<pre><code class="language-nix">systemd.network.enable = true;
+
+systemd.network.networks.&quot;10-lan&quot; = {
+  matchConfig.Name = [&quot;eno1&quot; &quot;vm-*&quot;];
+  networkConfig = {
+    Bridge = &quot;br0&quot;;
+  };
+};
+
+systemd.network.netdevs.&quot;br0&quot; = {
+  netdevConfig = {
+    Name = &quot;br0&quot;;
     Kind = &quot;bridge&quot;;
-    Name = &quot;microvm&quot;;
-  };
-  networks.&quot;10-microvm&quot; = {
-    matchConfig.Name = &quot;microvm&quot;;
-    networkConfig = {
-      DHCPServer = true;
-      IPv6SendRA = true;
-    };
-    addresses = [ {
-      addressConfig.Address = &quot;10.0.0.1/24&quot;;
-    } {
-      addressConfig.Address = &quot;fd12:3456:789a::1/64&quot;;
-    } ];
-    ipv6Prefixes = [ {
-      ipv6PrefixConfig.Prefix = &quot;fd12:3456:789a::/64&quot;;
-    } ];
   };
 };
+
+systemd.network.networks.&quot;10-lan-bridge&quot; = {
+  matchConfig.Name = &quot;br0&quot;;
+  networkConfig = {
+    Address = [&quot;192.168.1.2/24&quot; &quot;2001:db8::a/64&quot;];
+    Gateway = &quot;192.168.1.1&quot;;
+    DNS = [&quot;192.168.1.1&quot;];
+    IPv6AcceptRA = true;
+  };
+  linkConfig.RequiredForOnline = &quot;routable&quot;;
+};
 </code></pre>
-<p>This configuration will hand out IP addresses to clients on the
-bridge. In practise, better leave out the DHCP server and its state by
-opting for declarative, versioned configuration instead.</p>
-<p>Last, the TAP interfaces of MicroVMs shall be attached to this central
-bridge. Make sure your <code>matchConfig</code> matches just the interfaces you
-want!</p>
-<pre><code class="language-nix">systemd.network = {
-  networks.&quot;11-microvm&quot; = {
-    matchConfig.Name = &quot;vm-*&quot;;
-    # Attach to the bridge that was configured above
-    networkConfig.Bridge = &quot;microvm&quot;;
+<p>Now that the host is configured, you can define a MicroVM to have a static IP
+address with:</p>
+<pre><code class="language-nix">microvm = {
+  #...add additional MicroVM configuration here
+  interfaces = [
+    {
+      type = &quot;tap&quot;;
+      id = &quot;vm-test1&quot;;
+      mac = &quot;02:00:00:00:00:01&quot;;
+    }
+  ];
+};
+
+systemd.network.enable = true;
+
+systemd.network.networks.&quot;20-lan&quot; = {
+  matchConfig.Type = &quot;ether&quot;;
+  networkConfig = {
+    Address = [&quot;192.168.1.3/24&quot; &quot;2001:db8::b/64&quot;];
+    Gateway = &quot;192.168.1.1&quot;;
+    DNS = [&quot;192.168.1.1&quot;];
+    IPv6AcceptRA = true;
+    DHCP = &quot;no&quot;;
   };
 };
 </code></pre>
-<h2 id="provide-internet-access-with-nat"><a class="header" href="#provide-internet-access-with-nat">Provide Internet Access with NAT</a></h2>
-<p>IPv4 addresses are exhausted. It is a very common case that you get
-one public IPv4 address for your machine. The solution is to route
-your internal virtual machines with <em>Network Address Translation</em>.</p>
-<p>You might not get a dedicated /64 IPv6 prefix to route to your
-MicroVMs. NAT works for this address family, too!</p>
-<pre><code class="language-nix">networking.nat = {
-  enable = true;
-  enableIPv6 = true;
-  # Change this to the interface with upstream Internet access
-  externalInterface = &quot;eth0&quot;;
-  internalInterfaces = [ &quot;microvm&quot; ];
+<h2 id="docker-and-systemd-network"><a class="header" href="#docker-and-systemd-network">Docker and systemd-network</a></h2>
+<p>If you use the above <code>systemd.network</code> bridge config and wish to run
+Docker containers inside your microvms using <code>virtualisation.docker</code>,
+you may need to add the following snippet to stop <code>systemd-networkd</code> from
+managing the bridged <code>veth*</code> interfaces Docker creates for each container.
+Without this, network access inside the containers will be broken.</p>
+<pre><code class="language-nix">systemd.network.networks.&quot;19-docker&quot; = {
+  matchConfig.Name = &quot;veth*&quot;;
+  linkConfig = {
+    Unmanaged = true;
+  };
 };
 </code></pre>
-<p>Check out
-<a href="https://search.nixos.org/options?channel=unstable&amp;show=networking.nat.forwardPorts&amp;query=networking.nat.forwardPorts"><code>networking.nat.forwardPorts</code></a>
-to make your MicroVM's services available to networks outside your
-host!</p>
-<h2 id="port-forwarding"><a class="header" href="#port-forwarding">Port forwarding</a></h2>
-<p>Isolating your public Internet services is a great use-case for
-virtualization. But how does traffic get to you when your MicroVMs
-have private IP addresses behind NAT?</p>
-<p>NixOS has got you covered with the <code>networking.nat.forwardPorts</code>
-option! This example forwards TCP ports 80 (HTTP) and 443 (HTTPS) to
-other hosts:</p>
-<pre><code class="language-nix">networking.nat = {
-  enable = true;
-  forwardPorts = [ {
-    proto = &quot;tcp&quot;;
-    sourcePort = 80;
-    destination = my-addresses.http-reverse-proxy.ip4;
-  } {
-    proto = &quot;tcp&quot;;
-    sourcePort = 443;
-    destination = my-addresses.https-reverse-proxy.ip4;
-  } ];
-};
-</code></pre>
+<h2 id="advanced-improving-performance"><a class="header" href="#advanced-improving-performance">Advanced: Improving Performance</a></h2>
+<p>If you prioritize network performance over inter-VM communication on
+the virtual bridge, have a look into these alternatives:</p>
+<ul>
+<li>
+<p>Network interfaces with <code>type = &quot;macvtap&quot;</code> are supported in
+microvm.nix. While they're technically tap devices, they attach to
+an external Ethernet port, eliminating the <code>br0</code> bridge.</p>
+</li>
+<li>
+<p>Server Ethernet cards support SR-IOV: setup Virtual Function devices
+for PCI passthru into MicroVMs.</p>
+</li>
+</ul>
 
                     </main>
 
@@ -262,7 +281,7 @@ other hosts:</p>
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="host-systemd.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="advanced-network.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -276,7 +295,7 @@ other hosts:</p>
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="host-systemd.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="advanced-network.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
